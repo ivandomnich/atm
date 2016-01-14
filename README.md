@@ -1,4 +1,4 @@
-# atm test task
+# ATM Test Task
 
 - npm install
 - gulp dev
