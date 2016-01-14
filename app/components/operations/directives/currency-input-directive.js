@@ -15,7 +15,6 @@
                 var transformedInput,
                     currency = $filter('currency'),
                     reg = /\d+\.{0,1}\d{0,2}/g;
-//                    reg = /(\d+(\.\d{2})?)/;
 
                 ngModel.$parsers.push(function (modelValue) {
                     transformedInput = modelValue.toString().match(reg);
