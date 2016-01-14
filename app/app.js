@@ -25,7 +25,6 @@
     function config(tmhDynamicLocaleProvider, $translateProvider, $componentLoaderProvider) {
         $componentLoaderProvider.setTemplateMapping(function (name) {
             var dashName = dashCase(name);
-            // customized to use app prefix
             return './components/' + dashName + '/' + 'views' +  '/'  + dashName + '.html';
         });
 
@@ -34,7 +33,6 @@
                 return '-' + $1.toLowerCase();
             });
         }
-
 
         tmhDynamicLocaleProvider.localeLocationPattern('locales/angular-locale_{{locale}}.js');
 
@@ -67,5 +65,4 @@
         });
         $translateProvider.preferredLanguage('en');
     }
-
 })();

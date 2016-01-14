@@ -19,23 +19,18 @@
                 ngModel.$parsers.push(function (modelValue) {
                     transformedInput = modelValue.toString().match(reg);
 
-                    if(transformedInput == null) {
-                        ngModel.$setViewValue('');
-                        ngModel.$render();
-                        return modelValue;
-                    } else {
+                    if(transformedInput != null) {
                         ngModel.$setViewValue(transformedInput[0]);
                         ngModel.$render();
                         return transformedInput[0];
                     }
 
+                    ngModel.$setViewValue('');
+                    ngModel.$render();
                     return modelValue;
                 });
 
                 element.on('blur', function () {
-
-                    console.log(ngModel)
-
                     element.val($filter('currency')(ngModel.$modelValue));
                 });
 

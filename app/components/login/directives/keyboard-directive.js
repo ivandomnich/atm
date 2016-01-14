@@ -18,7 +18,7 @@
                         return;
                     }
 
-                    number = angular.element(event.target).text();
+                    number = angular.element(event.target).attr('data-title');
                     this.model = this.model == undefined ? number : this.model + number;
                 }
             },
