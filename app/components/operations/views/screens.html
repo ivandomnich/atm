@@ -1,0 +1,31 @@
+<div class="controls">
+    <button ng-class="{'active': operations.target == 'balance'}" ng-click="operations.goToScreen('balance')">{{'BALANCE' | translate}}</button>
+    <button ng-class="{'active': operations.target == 'withdrawal'}" ng-click="operations.goToScreen('withdrawal')">{{'WITHDRAWAL' | translate}}</button>
+</div>
+
+<div ng-if="operations.target" class="animate-switch-container" ng-switch on="operations.target">
+    <div class="animate-switch" ng-switch-when="balance">
+        <h3>{{'BALANCE' | translate}}</h3>
+        <div class="content-row">
+            {{'YOUR_BALANCE' | translate}}: {{::operations.balance | currency }}
+        </div>
+        <div class="buttons-row">
+            <button ng-click="operations.goToScreen('')">{{'BACK' | translate}}</button>
+            <a href="" ng-link="login">{{'EXIT' | translate}}</a>
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="withdrawal">
+        <h3>{{'WITHDRAWAL' | translate}}</h3>
+        <div class="content-row">
+            {{'PLEASE_ENTER_NUMBER' | translate}}:
+            <input type="text"
+                   ng-model="withdrawal"
+                    currency-input>
+        </div>
+        <div class="buttons-row">
+            <button>{{'OK' | translate}}</button>
+            <button ng-click="operations.goToScreen('')">{{'BACK' | translate}}</button>
+            <a href="" ng-link="login">{{'EXIT' | translate}}</a>
+        </div>
+    </div>
+</div>

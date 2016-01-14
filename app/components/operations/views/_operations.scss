@@ -1,0 +1,52 @@
+.operations-page {
+  .animate-switch-container {
+    position:relative;
+    background:white;
+    border:1px solid black;
+    height: 200px;
+    width: 400px;
+    overflow:hidden;
+  }
+
+  .animate-switch {
+    padding:30px 10px;
+    width: 360px;
+  }
+
+  .animate-switch.ng-animate {
+    transition:1s;
+    -webkit-transition:1s;
+    -moz-transition:1s;
+    position:absolute;
+    top:0;
+    left:400px;
+    right:0;
+    bottom:0;
+  }
+
+  .animate-switch.ng-leave.ng-leave-active {
+    left:-400px;
+  }
+
+  .animate-switch.ng-leave {
+    left: 0px;
+  }
+  .animate-switch.ng-enter.ng-enter-active {
+    left : 0px;
+  }
+
+  .title {
+    color: #00f;
+  }
+
+  .controls {
+    margin: 0 0 20px;
+  }
+
+  h3 {
+    @extend .title;
+  }
+  .content-row {
+    margin: 0 0 10px;
+  }
+}

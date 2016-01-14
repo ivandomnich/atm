@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+    <link href="/build/css/all.css" rel="stylesheet">
+</head>
+<body ng-app="app" ng-strict-di ng-controller="AppController">
+    <div id="wrapper">
+        <h1>ATM</h1>
+
+        <div id="content">
+            <div ng-viewport></div>
+        </div>
+    </div>
+
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+
+    <script src="scripts/angular-dynamic-locale.js"></script>
+    <script src="scripts/angular-translate.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/router-directive.es5.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="components/core/core-module.js"></script>
+    <script src="components/core/factories/atm-factory.js"></script>
+
+    <script src="components/login/login-module.js"></script>
+    <script src="components/login/controllers/login-controller.js"></script>
+    <script src="components/login/directives/keyboard-directive.js"></script>
+    <script src="components/login/directives/pin-code-input-directive.js"></script>
+
+    <script src="components/operations/operations-module.js"></script>
+    <script src="components/operations/controllers/operations-controller.js"></script>
+    <script src="components/operations/directives/operations-directive.js"></script>
+    <script src="components/operations/directives/currency-input-directive.js"></script>
+
+</body>
+</html>

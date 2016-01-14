@@ -1,0 +1,33 @@
+.login-page {
+  position: relative;
+  .row,
+  .lang {
+    margin: 0 0 20px;
+  }
+  .keyboard {
+    overflow: hidden;
+    text-align: center;
+    line-height: 20px;
+    li {
+      float: left;
+      margin: 0 10px 0 0;
+      a {
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $primary-border-color;
+      }
+    }
+  }
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    background: rgba(255,255,255, 0.8);
+  }
+}

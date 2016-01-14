@@ -1,0 +1,20 @@
+<div class="login-page">
+    <h2>{{'SCREEN_FORE_ENTERING_PIN' | translate}}:</h2>
+    <div class="lang">
+        <h2>{{'CHOOSE_YOUR_LANGUAGE' | translate}}:</h2>
+        <button ng-class="{'active': login.lang == 'en'}" ng-click="login.switchLanguage('en')">English</button>
+        <button ng-class="{'active': login.lang == 'fr'}" ng-click="login.switchLanguage('fr')">Français</button>
+    </div>
+    <form novalidate>
+        <div class="row">
+            <input type="password"
+                   ng-model="login.count"
+                   pin-code-input
+                   pin-code-input-successful-callback="login.goToOperations()"
+                   pin-code-input-unsuccessful-attempt-callback="login.freezeActions()"
+                   maxlength="4">
+        </div>
+        <keyboard model="login.count"></keyboard>
+    </form>
+    <span class="mask" ng-show="login.freeze">{{'PLEASE_TRY_AGAIN_IN_5_SECONDS' | translate}}</span>
+</div>
