@@ -12,17 +12,16 @@
             require: 'ngModel',
             scope: {},
             link: function (scope, element, attrs, ngModel) {
-                var transformedInput,
-                    currency = $filter('currency'),
+                var transformedInputValue,
                     reg = /\d+\.{0,1}\d{0,2}/g;
 
                 ngModel.$parsers.push(function (modelValue) {
-                    transformedInput = modelValue.toString().match(reg);
+                    transformedInputValue = modelValue.toString().match(reg);
 
-                    if(transformedInput != null) {
-                        ngModel.$setViewValue(transformedInput[0]);
+                    if(transformedInputValue != null) {
+                        ngModel.$setViewValue(transformedInputValue[0]);
                         ngModel.$render();
-                        return transformedInput[0];
+                        return transformedInputValue[0];
                     }
 
                     ngModel.$setViewValue('');

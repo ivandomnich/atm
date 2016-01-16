@@ -9,7 +9,6 @@
             },
             controller: function () {
                 var vm = this;
-
                 vm.items = ['balance', 'withdrawal'];
                 vm.goToScreen = goToScreen;
 

@@ -16,12 +16,13 @@
             link: function(scope, element, attrs, ngModel) {
                 var validValue = new Date().getFullYear(),
                     len = validValue.toString().length,
-                    transformedInput,
+                    transformedInputValue,
+                    reg = /^\d+$/,
                     isValid,
-                    counter = 0;
+                    counterCounter = 0;
 
                 ngModel.$formatters.push(function(value) {
-                    if(value && value.length == len) {
+                    if(value && value.length === len) {
                         validateField(value);
                     }
 
@@ -29,19 +30,21 @@
                 });
 
                 ngModel.$parsers.push(function (modelValue) {
-                    if (modelValue.replace) {
-                        transformedInput = modelValue.replace(/[^0-9]/g, '');
-                        if (transformedInput !== modelValue) {
-                            ngModel.$setViewValue(transformedInput);
-                            ngModel.$render();
-                            return transformedInput;
+                    transformedInputValue = modelValue ? modelValue.toString().match(reg)[0] : '';
+
+                    if(transformedInputValue != null) {
+                        ngModel.$setViewValue(transformedInputValue);
+                        ngModel.$render();
+
+                        if(transformedInputValue.length === len) {
+                            validateField(modelValue);
                         }
+
+                        return transformedInputValue;
                     }
 
-                    if(modelValue.length == len) {
-                        validateField(modelValue);
-                    }
-
+                    ngModel.$setViewValue('');
+                    ngModel.$render();
                     return modelValue;
                 });
 
@@ -53,13 +56,21 @@
                     if(isValid) {
                         scope.pinCodeInputSuccessfulCallback();
                     } else {
-                        counter++;
-                        if(counter > 3) {
+                        counterCounter++;
+                        if(counterCounter > 3) {
                             scope.pinCodeInputUnsuccessfulAttemptCallback();
-                            counter = 0;
-                            element.blur();
+                            counterCounter = 0;
+                            resetInput();
                         }
                     }
+                }
+
+                function resetInput() {
+                    ngModel.$setViewValue('');
+                    ngModel.$render();
+                    ngModel.$setValidity('pinCodeInput', true);
+                    element.blur();
+                    element.val('');
                 }
             }
         };

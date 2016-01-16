@@ -9,16 +9,21 @@
             },
             controller: function () {
                 var vm = this,
-                    number;
+                    number,
+                    isListClicked,
+                    target;
 
                 vm.setNumber = setNumber;
 
                 function setNumber(event) {
-                    if(this.model && this.model.length > 3 || angular.element(event.target).is('ul')) {
+                    target = angular.element(event.target);
+                    isListClicked = event.target === event.currentTarget;
+
+                    if(this.model && this.model.length > 3 || isListClicked) {
                         return;
                     }
 
-                    number = angular.element(event.target).attr('data-title');
+                    number = target.attr('data-title');
                     this.model = this.model == undefined ? number : this.model + number;
                 }
             },
